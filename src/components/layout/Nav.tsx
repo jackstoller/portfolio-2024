@@ -21,10 +21,10 @@ export const Nav: Component<NavProps> = (props) => {
 
     const orderedSections = [
       'about-me',
+      'projects',
       'work',
       'skills',
       'education',
-      'projects',
       'contact',
     ];
     return orderedSections.find((id) => activeIds().includes(id));
@@ -38,6 +38,9 @@ export const Nav: Component<NavProps> = (props) => {
         <NavItem to='#about-me' active={sectionActive('about-me')} onclick={props.onclick}>
           About Me
         </NavItem>
+        <NavItem to='#projects' active={sectionActive('projects')} onclick={props.onclick}>
+          Projects
+        </NavItem>
         <NavItem to='#work' active={sectionActive('work')} onclick={props.onclick}>
           Work
         </NavItem>
@@ -46,9 +49,6 @@ export const Nav: Component<NavProps> = (props) => {
         </NavItem>
         <NavItem to='#education' active={sectionActive('education')} onclick={props.onclick}>
           Education
-        </NavItem>
-        <NavItem to='#projects' active={sectionActive('projects')} onclick={props.onclick}>
-          Projects
         </NavItem>
         <NavItem to='#contact' active={sectionActive('contact')} onclick={props.onclick}>
           Contact

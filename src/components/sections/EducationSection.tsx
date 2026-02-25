@@ -30,6 +30,9 @@ export const EducationSection = () => {
                 Minor in Computer Science
               </h4>
               <h4 class='font-bold text-neutral-500 leading-5 mb-2'>
+                Minor in Computer Information Systems - Networking
+              </h4>
+              <h4 class='font-bold text-neutral-500 leading-5 mb-2'>
                 Minor in Business Administration
               </h4>
 

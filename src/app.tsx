@@ -101,10 +101,10 @@ export default function App() {
 
         <main class='px-6 sm:px-12 lg:pt-[16rem]'>
           <AboutMeSection />
+          <ProjectsSection />
           <WorkSection />
           <SkillsSection />
           <EducationSection />
-          <ProjectsSection />
           <ContactSection />
           <CreditsSection />
         </main>
