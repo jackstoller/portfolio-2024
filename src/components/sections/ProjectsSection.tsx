@@ -1,4 +1,4 @@
-import { ImageCarouselClientComponent } from '../display/ImageCarousel';
+import { ImageCarouselClientComponent } from '../display/ImageCarousel.client';
 import { P } from '../display/P';
 import { Project } from '../display/Project';
 import { Section } from '../display/Section';
@@ -9,8 +9,164 @@ export const ProjectsSection = () => {
   return (
     <Section title='Projects' id='projects'>
       <Project
+        title='Secure Peer-to-Peer Messaging Using Distributed Servers'
+        date='In Progress'
+        skills={['Distributed Compute', 'Decentralized', 'Go', 'WebRTC', 'Peer-to-Peer']}
+      >
+          This is my senior design project for my bachelor's degree and is currently
+          on going with the expected completion in Spring of 2026.
+          <br />
+          <strong>Abstract</strong>
+          <P>
+            This project designs, implements and demonstrates a secure, highly available peer-to-peer
+            messaging system. Peer to peer communications leverage WebRTC for end-to-end encrypted
+            communication channels. It is supported by a distributed mesh of servers for peer discovery and
+            for WebRTC channels with TURN relays. The system will be decentralized, making it more
+            resistant to targeted availability attacks. Peer to peer connections will be used to minimize extra
+            metadata that could be used in a metadata attack. Security phrases will be displayed so users can
+            validate the security of their communication channel. This project aims to demonstrate the
+            practicality of using a decentralized model for secure communications.
+
+            <br /><br />
+            View the GitHub repo at <A to='https://github.com/jackstoller/p2p-messaging'>github.com/jackstoller/p2p-messaging</A>
+            &nbsp;and view the project proposal <A to='/resources/CISSeniorProject-ProjectProposal-JackStoller.pdf'>here</A>
+          </P>
+      </Project>
+
+      <Project
+        title='Cloudflare AI Summarization'
+        date='Winter 2026'
+        skills={['AI', 'Docker', 'Supabase', 'HTML', 'CSS', 'JavaScript']}
+      >
+          <P class='mb-4'>
+            The goal with this project was to be able to upload large amounts
+            of data, including very large PDF documents. It's then scanned and
+            analyzed so that an AI agent can quickly scan and find answers. The
+            agent is designed to cite the specific source making it much easier
+            to quickly verify the accuracy of every statement. It includes a
+            fully custom AI agent runtime, allowing any model to be used for function
+            calling. It also support reasoning and direct citations. Future plans
+            include allowing the agent to spin off subtasks and create it's own
+            documents.
+
+            <br /><br />
+            Try it for yourself at <A to='https://summerize.jackstoller.com'>summerize.jackstoller.com</A>
+          </P>
+
+        <ImageCarouselClientComponent
+          images={[
+            '/images/projects/summarizer-01.png',
+            '/images/projects/summarizer-02.png',
+            '/images/projects/summarizer-03.png',
+            '/images/projects/summarizer-04.png',
+          ]}
+        />
+      </Project>
+
+      <Project
+        title='Thryve'
+        date='Fall 2025'
+        skills={['AI', 'Docker', 'Supabase', 'HTML', 'CSS', 'JavaScript']}
+      >
+        <div class='flex gap-8'>
+          <P>
+            This was project to help me manage my many plants with reminders of
+            when they needed to watered and fertilized. It wasn't practical for
+            me to come up with my own image recognition software and full
+            database of plant care instructions. Instead I used three AI models
+            which all draw their own independent data and a fourth determines if
+            there is a consensus. The multistage verification has yielded fairly
+            accurate results overall without significant development on my end. 
+            Ran on the Supabase stack in a cloud vm with docker.
+
+            <br /><br />
+            Try it for yourself at <A to='https://thryve.jackstoller.com'>thryve.jackstoller.com</A>
+          </P>
+
+          <img
+            src='/images/projects/thryve-05.png'
+            alt='ClickHouse Logo'
+            width='180'
+            height='156'
+            class='hidden sm:block flex-none m-8'
+          />
+        </div>
+
+        <ImageCarouselClientComponent
+          images={[
+            '/images/projects/thryve-01.png',
+            '/images/projects/thryve-02.png',
+            '/images/projects/thryve-03.png',
+            '/images/projects/thryve-04.png',
+          ]}
+        />
+      </Project>
+
+      <Project
+        title='Food Roulette'
+        date='Fall 2025'
+        skills={['JavaScript', 'Docker', 'Web APIs', 'HTML']}
+      >
+        <P class='mb-4'>
+          This small project allows users to randomly choose a restaurant
+          that meets their criteria. They enter their location, preferences
+          and press role. The website uses Google Map's Places API to find
+          locations that match. The application was fully contained within
+          docker.
+
+          <br /><br />
+          View the GitHub repo at <A to='http://github.com/jackstoller/food-roulette'>github.com/jackstoller/food-roulette</A>
+        </P>
+
+        <ImageCarouselClientComponent
+          images={[
+            '/images/projects/food-roulette-01.png',
+            '/images/projects/food-roulette-02.png',
+            '/images/projects/food-roulette-03.png',
+          ]}
+        />
+      </Project>
+
+          
+      <Project
+        title='Vigil'
+        date='Spring 2025'
+        skills={['Kotlin', 'Android', 'Security']}
+      >
+        <div class='flex gap-8'>
+          <P>
+            This project explores what data could be captured by a malicious
+            app with just the accessibility permissions on the latest
+            version of Android. It was designed and developed for a programming
+            cybersecurity course as an honors' project. During the course of the
+            project, I was able to successfully demonstrate how an attacker could
+            use it as a keylogger, spyware or many other sorts of surveillance
+            software if given permission. This project highlights the importance
+            of security through strict permission control.
+
+            <br /><br />
+            During the project, I gain more knowledge about the Android operating
+            system handles applications, permissions and activities. Through this
+            project I was able to learn more about how to develop native mobile
+            applications.
+
+            <br /><br />
+            View the GitHub repo at <A to='https://github.com/jackstoller/vigil'>github.com/jackstoller/vigil</A>
+          </P>
+          <img
+            src='/images/projects/vigil-01.png'
+            alt='ClickHouse Logo'
+            width='160'
+            height='357'
+            class='hidden sm:block flex-none m-8 opacity-75'
+          />
+        </div>
+      </Project>
+
+
+      <Project
         title='Map Utilities'
-        date='June 2024'
+        date='Summer 2024'
         skills={['Go', 'Web Scraping', 'goroutines', 'Google Maps API']}
       >
         <P class='mb-4'>
@@ -36,7 +192,7 @@ export const ProjectsSection = () => {
 
       <Project
         title='ClickHouse Data Analysis'
-        date='February 2024'
+        date='Winter 2024'
         skills={[
           'Go',
           'Postgres',
@@ -73,7 +229,7 @@ export const ProjectsSection = () => {
 
       <Project
         title='SwimXO'
-        date='March 2022'
+        date='Spring 2022'
         skills={[
           'Firebase',
           'ReactJS',
@@ -112,7 +268,7 @@ export const ProjectsSection = () => {
 
       <Project
         title='Encryption Report'
-        date='May 2022'
+        date='Spring 2022'
         skills={['Three.js', 'Web Components', 'HTML', 'CSS', 'JavaScript']}
       >
         <P class='mb-4'>
@@ -120,7 +276,7 @@ export const ProjectsSection = () => {
           government regulation on data security, encryption and user privacy.
           It was originally created as a capstone project in one of my
           undergraduate courses. It uses Three.js to show interactive 3D models.
-          The code for this project is available on <A to='https://github.com/Jack-Stoller/comp-encryption'>GitHub</A>. A live
+          The code for this project is available on <A to='https://github.com/jackstoller/comp-encryption'>GitHub</A>. A live
           version of the report can be viewed <A to='https://projects.jackstoller.com/compencryption/'>here</A>.
         </P>
 
@@ -134,7 +290,7 @@ export const ProjectsSection = () => {
         />
       </Project>
 
-      <A to='https://github.com/Jack-Stoller?tab=repositories'>
+      <A to='https://github.com/jackstoller?tab=repositories'>
         View More Projects on GitHub
       </A>
     </Section>

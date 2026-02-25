@@ -1,6 +1,5 @@
-import Flickity from 'flickity';
-import { Component, For, onMount } from 'solid-js';
-import { clientOnly } from '@solidjs/start';
+import { Component, For, onCleanup, onMount } from 'solid-js';
+import type Flickity from 'flickity';
 import 'flickity/css/flickity.css';
 import './ImageCarousel.css';
 
@@ -12,18 +11,50 @@ interface ImageCarouselProps {
 }
 
 const ImageCarousel: Component<ImageCarouselProps> = (props) => {
-  let carouselRef;
+  let carouselRef: HTMLDivElement | undefined;
+  let flickity: Flickity | undefined;
 
-  onMount(async () => {
-    // Initialize Flickity when the component mounts
-    // This will run on the client
-    const Flickity = (await import('flickity')).default; // Dynamically import Flickity to avoid SSR issues
-    new Flickity(carouselRef!, {
-      cellAlign: 'center',
-      contain: true,
-      selectedAttraction: 0.03,
-      friction: 0.35,
-      ...(props.options ?? {}),
+  onMount(() => {
+    let disposed = false;
+
+    void (async () => {
+      const FlickityModule = await import('flickity');
+      if (disposed || !carouselRef) return;
+
+      flickity = new FlickityModule.default(carouselRef, {
+        cellAlign: 'center',
+        contain: true,
+        selectedAttraction: 0.03,
+        friction: 0.35,
+        ...(props.options ?? {}),
+      });
+
+      const images = Array.from(carouselRef.querySelectorAll('img'));
+      const resize = () => flickity?.resize();
+
+      let pending = 0;
+      for (const image of images) {
+        if (!image.complete) {
+          pending += 1;
+          const onSettled = () => {
+            pending -= 1;
+            if (pending === 0) resize();
+          };
+
+          image.addEventListener('load', onSettled, { once: true });
+          image.addEventListener('error', onSettled, { once: true });
+        }
+      }
+
+      if (pending === 0) {
+        requestAnimationFrame(resize);
+      }
+    })();
+
+    onCleanup(() => {
+      disposed = true;
+      flickity?.destroy();
+      flickity = undefined;
     });
   });
 
@@ -52,6 +83,3 @@ const ImageCarousel: Component<ImageCarouselProps> = (props) => {
 };
 
 export default ImageCarousel;
-export const ImageCarouselClientComponent = clientOnly(
-  () => import('./ImageCarousel')
-);

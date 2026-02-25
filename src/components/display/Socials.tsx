@@ -18,7 +18,7 @@ export const Socials: Component<SocialsProps> = (props) => {
         />
       </A>
 
-      <A to='https://github.com/Jack-Stoller/'>
+      <A to='https://github.com/jackstoller/'>
         <img
           src='/images/socials/github.svg'
           alt='Github Logo'

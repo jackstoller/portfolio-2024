@@ -34,7 +34,7 @@ export const EducationSection = () => {
               </h4>
 
               <p class='text-neutral-800 text-sm'>
-                Expected graduation in June 2026.
+                Expected graduation in Spring 2026.
               </p>
             </div>
           </div>
